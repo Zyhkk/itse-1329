@@ -1,9 +1,5 @@
 import java.util.Scanner
 
-class Racer(val seconds: Int, val racer: String) {
-    override fun toString(): String {
-        return "$seconds: $Racer"
-    }
 fun main() {
 
   println("We're going to sort three racers based on their times today.") 
@@ -12,27 +8,49 @@ fun main() {
   val scanner  = Scanner(System.`in`)
   val name1 = scanner.nextLine()
 
-  println("Enter the first time: ")
-  val time1 = scanner.nextInt()
+  println("Enter the first time(in minutes): ")
+  val time1 = scanner.nextDouble()
 
   println("Enter the second name: ")
-  val name2 = scanner.nextLine()
+  val name2 = readLine()
 
-  println("Enter the second time: ")
-  val time2 = scanner.nextInt()
+  println("Enter the second time(in minutes): ")
+  val time2 = scanner.nextDouble()
 
   println("Enter the third name: ")
-  val name3 = scanner.nextLine()
+  val name3 = readLine()
 
-  println("Enter the third time: ")
-  val time3 = scanner.nextInt()
-  
-  val times = mutableListOf(Racer(time1, name1), Racer(time2,name2), Racer(time3, name3))
+  println("Enter the third time(in minutes): ")
+  val time3 = scanner.nextDouble()
 
-  times.sortWith(compareByDescending { it.seconds })
-  
-    times.sortedBy { it.id }
-    println(times)
+  println("Your fastest in descending order:")
+  if (time1 < time2 && time1 < time3){
+    println(name1)
+    if (time2 < time3){
+      println(name2)
+      println(name3)
+    } else{
+      println(name3)
+      println(name2)
+    }
+  } else if (time2 < time1 && time2 < time3){
+    println(name2)
+    if(time1 < time3){
+      println(name1)
+      println(name3)
+    } else {
+      println(name3)
+      println(name1)
+    }
+  } else {
+    println(name3)
+    if (time1 < time2){
+    println(name1)
+    println(name2)
+    } else {
+      println(name2)
+      println(name1)
+    }
 
 }
 }
